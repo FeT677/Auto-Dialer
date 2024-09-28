@@ -1,8 +1,8 @@
 <p align="center">
-![image](https://github.com/user-attachments/assets/2c035cb8-1703-4583-9e4d-14756977f99b)
+![Image of cat]([https://github.com/blademoon/Markdown/blob/main/Picture/cat.jpg](https://github.com/user-attachments/assets/2c035cb8-1703-4583-9e4d-14756977f99b))
 </p>
 <p align="center">
-![image](https://github.com/user-attachments/assets/0e864108-dfc2-4507-b480-e38f76741e1f)
+![Image of cat](https://github.com/user-attachments/assets/0e864108-dfc2-4507-b480-e38f76741e1f))
 </p>
 
 
