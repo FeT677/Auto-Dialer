@@ -1,3 +1,3 @@
-Teseract OCR download - https://mega.nz/folder/g6NRGbbZ#fZSnC96Due57nEnkNPmytA
+Auto Dialer - утилита, которая нужна для того, чтобы упросить и ускорить звонки по объявлениям на Авито с ПК.
 
-Для работы скриптов нужно поместить папку Teseract в ту же дирректорию, где и скрипты.
+https://mega.nz/folder/hykXFS7J#QBKSS2lM4j2ZJKOPDqi4zA - скачивание браузерного расширения, необходимого для её работы и самой утилиты.
