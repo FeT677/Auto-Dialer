@@ -1,10 +1,9 @@
 <p align="center">
-<img width="400" height="250" src="[https://github.com/blademoon/Markdown/blob/main/Picture/cat.jpg](https://github.com/blademoon/Markdown/blob/main/Picture/cat.jpg](https://github.com/user-attachments/assets/2c035cb8-1703-4583-9e4d-14756977f99b)">
+<img width="400" height="250" src="https://github.com/user-attachments/assets/1cd7fce2-5d40-45a1-992b-334508c70fe4">
 </p>
 <p align="center">
 <img width="400" height="250" src="https://github.com/user-attachments/assets/0e864108-dfc2-4507-b480-e38f76741e1f">
 </p>
-
 
 Auto Dialer - утилита, которая нужна для того, чтобы упросить и ускорить звонки по объявлениям на Авито с ПК.
 
