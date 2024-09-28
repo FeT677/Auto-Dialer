@@ -1,4 +1,3 @@
-
 from find_and_call import extract_text_from_clipboard_image, wait_for_new_image_in_clipboard
 
 def run():

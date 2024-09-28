@@ -1,4 +1,3 @@
-import os
 import time
 import pytesseract
 import pyperclip
@@ -7,9 +6,7 @@ import webbrowser
 from PIL import ImageGrab
 
 #Задание пути к Тесеракту как (дирректория скрипта/папка Tesseract-OCR/tesseract.exe)
-current_dir = os.path.dirname(os.path.abspath(__file__))
-pytesseract.pytesseract.tesseract_cmd = os.path.join(current_dir, 'Tesseract-OCR', 'tesseract.exe')
-
+pytesseract.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
 
 #Функция ожидания картинки в буфере обмена
 def wait_for_new_image_in_clipboard(previous_image=None):
