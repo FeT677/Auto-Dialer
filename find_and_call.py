@@ -2,13 +2,16 @@ import os
 import time
 import pytesseract
 import pyperclip
+import re
+import webbrowser
 from PIL import ImageGrab
 
-from phone_utils import find_phone_number, open_softphone_and_call
-
+#Задание пути к Тесеракту как (дирректория скрипта/папка Tesseract-OCR/tesseract.exe)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 pytesseract.pytesseract.tesseract_cmd = os.path.join(current_dir, 'Tesseract-OCR', 'tesseract.exe')
 
+
+#Функция ожидания картинки в буфере обмена
 def wait_for_new_image_in_clipboard(previous_image=None):
     while True:
         img = ImageGrab.grabclipboard()
@@ -19,6 +22,8 @@ def wait_for_new_image_in_clipboard(previous_image=None):
             return img
         time.sleep(1)
 
+
+#Функция получения текста с картинки в буфере обмена
 def extract_text_from_clipboard_image():
     img = ImageGrab.grabclipboard()
 
@@ -42,3 +47,28 @@ def extract_text_from_clipboard_image():
         print("Изображение не найдено в буфере обмена.")
         pyperclip.copy('')
         return None
+    
+
+#Функция поиска номера на картинке
+def find_phone_number(text):
+    try:
+        phone_number = re.findall(r'\+?\d[\d\s-]{7,}\d', text)
+    except:
+        print('Не найден номер телефона на изображении\n\n')
+
+    if phone_number:
+        formatted_phone_number = re.sub(r'[-\s]', '', phone_number[0])
+        print(f"Найден номер телефона: {formatted_phone_number}")
+        
+        return formatted_phone_number
+    else:
+        print("Номер телефона не найден.")
+        
+        return None
+
+
+#Функция отправки номера телефона в звонилку по протоколу TEL:
+def open_softphone_and_call(phone_number):
+    tel_url = f"tel:{phone_number}"
+    # Открытие номера через протокол tel
+    webbrowser.open(tel_url)
