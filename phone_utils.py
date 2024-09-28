@@ -1,5 +1,4 @@
 import re
-import telnetlib
 import webbrowser
 
 def find_phone_number(text):

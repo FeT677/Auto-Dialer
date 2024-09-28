@@ -1,11 +1,23 @@
-import pytesseract
-from PIL import ImageGrab
-import pyperclip
-import logging
+import os
 import time
+import pytesseract
+import pyperclip
+from PIL import ImageGrab
+
 from phone_utils import find_phone_number, open_softphone_and_call
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+current_dir = os.path.dirname(os.path.abspath(__file__))
+pytesseract.pytesseract.tesseract_cmd = os.path.join(current_dir, 'Tesseract-OCR', 'tesseract.exe')
+
+def wait_for_new_image_in_clipboard(previous_image=None):
+    while True:
+        img = ImageGrab.grabclipboard()
+        if isinstance(img, list):
+            img = img[0]
+
+        if img != previous_image:
+            return img
+        time.sleep(1)
 
 def extract_text_from_clipboard_image():
     img = ImageGrab.grabclipboard()
@@ -30,19 +42,3 @@ def extract_text_from_clipboard_image():
         print("Изображение не найдено в буфере обмена.")
         pyperclip.copy('')
         return None
-
-def on_button_click():
-    from image_handler import wait_for_new_image_in_clipboard  # Используем функцию из image_handler
-    previous_image = None
-    img = wait_for_new_image_in_clipboard(previous_image)
-    if img:
-        print("PNG найден в буфере обмена.")
-        logging.info("PNG найден в буфере обмена.")
-        previous_image = img
-        extracted_text = extract_text_from_clipboard_image()
-        if extracted_text:
-            phone_number = find_phone_number(extracted_text)
-            if phone_number:
-                open_softphone_and_call(phone_number)
-        else:
-            print("Текст не найден на изображении.")
