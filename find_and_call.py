@@ -5,19 +5,9 @@ import re
 import webbrowser
 from PIL import ImageGrab
 
-#Задание пути к Тесеракту как (дирректория скрипта/папка Tesseract-OCR/tesseract.exe)
+
+#Задание пути к Тесеракту 
 pytesseract.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
-
-#Функция ожидания картинки в буфере обмена
-def wait_for_new_image_in_clipboard(previous_image=None):
-    while True:
-        img = ImageGrab.grabclipboard()
-        if isinstance(img, list):
-            img = img[0]
-
-        if img != previous_image:
-            return img
-        time.sleep(1)
 
 
 #Функция получения текста с картинки в буфере обмена
