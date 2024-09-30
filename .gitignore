@@ -2,4 +2,4 @@ venv
 __pycache__
 .gitignore
 Tesseract-OCR
-
+debug_log.txt
