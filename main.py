@@ -1,7 +1,6 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk, ImageGrab
 import threading
-import time
 from find_and_call import extract_text_from_clipboard_image
 
 # Флаг и событие для работы скрипта

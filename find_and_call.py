@@ -1,4 +1,3 @@
-import time
 import pytesseract
 import pyperclip
 import re
