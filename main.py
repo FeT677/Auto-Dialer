@@ -2,6 +2,7 @@ import customtkinter as ctk
 from PIL import Image, ImageTk, ImageGrab
 import threading
 from find_and_call import extract_text_from_clipboard_image
+import time
 
 # Флаг и событие для работы скрипта
 script_running = False
@@ -13,15 +14,21 @@ def run():
     print('Скрипт запущен\n\n')
     previous_image = None
 
+    previous_image = None
+    previous_copy_time = 0  # Время последнего копирования изображения
+
     while script_running:
         # Проверяем буфер обмена на наличие изображения
         img = ImageGrab.grabclipboard()
         if isinstance(img, list):
             img = img[0]
 
-        if img and img != previous_image:
-            extract_text_from_clipboard_image()
-            previous_image = img
+        if img:
+            current_time = time.time()  # Текущее время
+            if img != previous_image or (img == previous_image and current_time - previous_copy_time > 1):
+                extract_text_from_clipboard_image()
+                previous_image = img
+                previous_copy_time = current_time  # Обновляем время последнего копирования
 
         # Используем событие для уменьшения нагрузки на процессор
         stop_event.wait(1)
