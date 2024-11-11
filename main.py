@@ -55,27 +55,22 @@ def hide_window():
     window_hidden = True
     create_tray_icon()
 
-
 def show_window(icon, item):
     global window_hidden
-    icon.stop()  # Остановить иконку трея
-    window.deiconify()  # Восстановить окно
+    icon.stop()  
+    window.deiconify()
     window_hidden = False
-
 
 def quit_window(icon, item):
     icon.stop()
     window.quit()
     sys.exit()
 
-
 def create_tray_icon():
     image = Image.open("Auto Dialer.ico")
-    
-    menu = (item('Развернуть', show_window), item('Выход', quit_window))
+    menu = (item('Показать', show_window), item('Закрыть', quit_window))
     icon = pystray.Icon("Auto Dialer", image, "Auto Dialer", menu)
     icon.run()
-
 
 ##### Создаем интерфейс #####
 
@@ -99,7 +94,7 @@ toggle_switch = ctk.CTkSwitch(
 )
 toggle_switch.place(relx=0.5, rely=0.3, anchor="center")  # Центрируем по горизонтали, изменяем rely для позиционирования по вертикали
 
-minimize_button = ctk.CTkButton(CTkFrame, text="Спрятать окно (свернуть в трей)", command=hide_window)
+minimize_button = ctk.CTkButton(CTkFrame, text="СВЕРНУТЬ В ТРЕЙ", command=hide_window)
 minimize_button.place(relx=0.5, rely=0.7, anchor="center")  # Центрируем кнопку по горизонтали, ниже по вертикали
 
 window.mainloop()

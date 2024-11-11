@@ -8,17 +8,18 @@ from PIL import ImageGrab
 # Задание пути к Тесеракту
 pytesseract.pytesseract.tesseract_cmd = r"Tesseract-OCR\tesseract.exe"
 
-
 # Функция получения текста с картинки в буфере обмена
 def extract_text_from_clipboard_image():
     img = ImageGrab.grabclipboard()
     if isinstance(img, list):
         img = img[0]
     if isinstance(img, ImageGrab.Image.Image):
-        extracted_text = pytesseract.image_to_string(img)
+        custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789-'
+        extracted_text = pytesseract.image_to_string(img, config=custom_config)
         if extracted_text.strip():
             pyperclip.copy(extracted_text)
             if find_phone_number(extracted_text):
+                print(f'Полученный номер {extracted_text}')
                 open_softphone_and_call(extracted_text)
         else:
             pyperclip.copy("")
