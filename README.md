@@ -32,7 +32,7 @@ Python код автоматически забирает её, отправля
                                                                               
 - создать виртуальное окружение                                               
 - установить зависимости - pip install req.txt                                
-- компилировать - pyinstaller --onefile --noconsole --name "Auto Dialer" main.py            
+- компилировать - pyinstaller --onefile --noconsole --name "Auto Dialer APP" --icon="Auto Dialer.ico" main.py
 - готово, забираем exe из папки dist.                                         
                                                                               
 Залить распакованный Teseract OCR в ту же папку, где у вас будет лежать exe   
